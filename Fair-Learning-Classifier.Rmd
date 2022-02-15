@@ -1,0 +1,42 @@
+---
+title: "Fair classifier Design"
+author: Aytijhya Saha, Samahriti Mukherjee, Rishi Dey Chowdhury
+date: February 15, 2022
+output: powerpoint_presentation
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Objective
+
+We present here regularization-based approach for reducing bias in
+learned classifiers. We apply this approach using various definitions of fairness to establish fairness in the learned classifier and compare our results to that of a classifier without implementing this fairness based regularization.
+
+## Description of the data
+
+We demonstrate the method using Adult Data, downloaded from <https://archive.ics.uci.edu/ml/machine-learning-databases/adult/>. Here,prediction task is to classify whether a person makes over 50K a year. The protected groups are :
+race and sex 
+The unproteected groups are -
+age, workclass, fnlwgt, education, education-num, marital-status,occupation, relationship, capital-gain, capital-loss, hours-per-week and native country
+
+## Brief description of the method:
+$minimize_{\theta}\enspace [-ll(\theta;S) + \sum_{i=1}^{N} c_i.D_i + ||\theta||_2] $
+
+
+
+## Slide with Plot
+
+```{r pressure}
+plot(pressure)
+```
+
+## Slide with Plot
+
+```{r}
+v=c(1,2,3)
+x=c(2,7,4)
+plot(v,x)
+```

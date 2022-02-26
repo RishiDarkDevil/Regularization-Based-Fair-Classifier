@@ -10,3 +10,4 @@ To view our analysis in sequential order, see `Fair-Classifier.ipynb`.
 The file descriptions:
 - `Fair-Classifier.ipynb`: Introduction to why Fairness is an issue, Fairness Metric Definitions, Fairness Definitions, Index of techniques widely used and developed till now to address fairness issue in machine learning models and data.
 - `Fairness-Definitions-Comparison.ipynb`: Application of the definitions seen in above file on a dataset. Comparing the value obtained from several metrics and deciding whether the data is fair or not and evaluating fairness of the trained model.
+- `Fairness-New-Definitions.ipynb`: New fairness definitions presented along with discussion on each definition.

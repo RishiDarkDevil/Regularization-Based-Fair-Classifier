@@ -3,15 +3,18 @@ adult=read.csv(file.choose(),header=TRUE)
 h=function(theta,x){
   x=c(1,x)
   n=length(x)
-  for(i in 1:n)
-    a=a-theta[i]*x[i]
-  1/(1+exp(a))
+  print(x)
+  print(theta)
+  # a=0
+  # for(i in 1:n)
+  #   a=a-theta[i]*x[i]
+  1/(1+exp(sum(x*theta)))
 }
 ll=function(theta,y,x){
   n=nrow(x)
   a=0
   for(i in 1:n){
-    a=a+y[i]*log(h(theta,x[i,]))+(1-y[i])*log(1-h(theta,x[i,]))
+    a=a+y[i]*log(h(theta,as.vector(x[i,]))+(1-y[i])*log(1-h(theta,as.vector(x[i,]))))
   }
   a
 }
@@ -54,9 +57,9 @@ FNRdif=function(theta,x){
   a=0
   b=0
   for(i in 1:n)
-    a=a+h(theta,x[i])
+    a=a+h(theta,x[i,])
   for(j in 1:m)
-    b=b+h(theta,x[i])
+    b=b+h(theta,x[i,])
   abs(-a/n+b/m)
 }
 FPRdif=function(theta,x){
@@ -65,9 +68,9 @@ FPRdif=function(theta,x){
   a=0
   b=0
   for(i in 1:n)
-    a=a+h(theta,x[i])
+    a=a+h(theta,x[i,])
   for(j in 1:m)
-    b=b+h(theta,x[i])
+    b=b+h(theta,x[i,])
   abs(-a/n+b/m)
 }
 
@@ -75,7 +78,7 @@ Obj= function(theta){
   c1=1
   c2=1
   c3=1
-  -ll(theta,adult$Income.Binary,adult[,-3]) + c1*FPRdif + c2*FNRdif + c3*sum(theta^2)
+  -ll(theta,adult$Income.Binary,adult[,-3]) + c1*FPRdif(theta,adult[,-3]) + c2*FNRdif(theta,adult[,-3]) + c3*sum(theta^2)
 }
 theta=0
 e=0.01

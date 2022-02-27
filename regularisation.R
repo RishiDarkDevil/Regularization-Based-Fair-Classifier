@@ -1,32 +1,35 @@
 library(numDeriv)
-adult=read.csv(file.choose(),header=TRUE)
+#adult=read.csv(file.choose(),header=TRUE)
+
 h=function(theta,x){
-  x=c(1,x)
+  v=c()
+  x= as.vector(x)
+  for(i in 1:length(x)) v[i]=x[i]
+  x=unlist(c(1,v))
   n=length(x)
-  print(x)
-  print(theta)
-  # a=0
-  # for(i in 1:n)
-  #   a=a-theta[i]*x[i]
-  1/(1+exp(sum(x*theta)))
+  
+  1/(1+exp(-sum(x*theta)))
 }
+
 ll=function(theta,y,x){
   n=nrow(x)
   a=0
   for(i in 1:n){
-    a=a+y[i]*log(h(theta,as.vector(x[i,]))+(1-y[i])*log(1-h(theta,as.vector(x[i,]))))
+    a=a+y[i]*log(h(theta,x[i,]))+(1-y[i])*log(1-h(theta,x[i,]))
   }
   a
 }
 n=nrow(adult)
+
 NFpos=c()
 j=1
 for(i in 1:n){
-  if(adult$Income.Binary[i]== 1 && adult$sex[i]==0){
+  if(adult$Income.Binary[i] == 1 && adult$sex[i] == 0){
     NFpos[j]=i
     j=j+1
   }
 }
+
 NFneg=c()
 for(i in 1:n){
   j = 1
@@ -35,6 +38,7 @@ for(i in 1:n){
     j=j+1
   }
 }
+
 NMpos=c()
 for(i in 1:n){
   j = 1
@@ -51,38 +55,41 @@ for(i in 1:n){
     j=j+1
   }
 }
+
 FNRdif=function(theta,x){
-  n=len(NFpos)
-  m=len(NMpos)
-  a=0
-  b=0
-  for(i in 1:n)
-    a=a+h(theta,x[i,])
-  for(j in 1:m)
-    b=b+h(theta,x[i,])
-  abs(-a/n+b/m)
+  n=length(NFpos)
+  m=length(NMpos)
+  # a=0
+  # b=0
+  # for(i in 1:n)
+    a=sum(h(theta,x[i,]))
+  #for(j in 1:m)
+    b=sum(h(theta,x[i,]))
+  -a/n+b/m
 }
+
 FPRdif=function(theta,x){
-  n=len(NFneg)
-  m=len(NMneg)
-  a=0
-  b=0
-  for(i in 1:n)
-    a=a+h(theta,x[i,])
-  for(j in 1:m)
-    b=b+h(theta,x[i,])
-  abs(-a/n+b/m)
+  n=length(NFneg)
+  m=length(NMneg)
+  # a=0
+  # b=0
+  # for(i in 1:n)
+    a=sum(h(theta,x[i,]))
+  #for(j in 1:m)
+    b=sum(h(theta,x[i,]))
+  -a/n+b/m
 }
 
 Obj= function(theta){
   c1=1
   c2=1
-  c3=1
-  -ll(theta,adult$Income.Binary,adult[,-3]) + c1*FPRdif(theta,adult[,-3]) + c2*FNRdif(theta,adult[,-3]) + c3*sum(theta^2)
+  c3=1  
+  -ll(theta,adult$Income.Binary,adult[,-3]) + c1*abs(FPRdif(theta,adult[,-3])) + c2*abs(FNRdif(theta,adult[,-3])) + c3*sum(theta^2)
 }
+
 theta=0
 e=0.01
-for (i in 1:n) {
+for (i in 1:10) {
   theta = theta - e*grad(Obj,theta)
   print(theta)
 }

@@ -11,3 +11,5 @@ The file descriptions:
 - `Fair-Classifier.ipynb`: Introduction to why Fairness is an issue, Fairness Metric Definitions, Fairness Definitions, Index of techniques widely used and developed till now to address fairness issue in machine learning models and data.
 - `Fairness-Definitions-Comparison.ipynb`: Application of the definitions seen in above file on a dataset. Comparing the value obtained from several metrics and deciding whether the data is fair or not and evaluating fairness of the trained model.
 - `Fairness-New-Definitions.ipynb`: New fairness definitions presented along with discussion on each definition.
+- `Regularisation.R`: It contains the R-Code to perform the regularization based on minimizing FPR and FNR, it is not working yet.
+- `Fairness New Definition.pdf`: It contains a possibly new definition for fairness.

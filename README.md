@@ -1,5 +1,5 @@
 # Classifier Fairness
-Here I address the issue of fairness in Machine Learning classification algorithms. In many daily life scenario, where machine learning is gradually bein incorporated in various applications, it becomes increasing important to address the issue of fairness i.e. our model should not discriminate among individuals based on their color, caste, race, sex, etc. 
+Here I address the issue of fairness in Machine Learning classification algorithms. In many daily life scenario, where machine learning is gradually being incorporated in various applications, it becomes increasing important to address the issue of fairness i.e. our model should not discriminate among individuals based on their color, caste, race, sex, etc. 
 
 Unfortunately, various machine learning algorithms if not addressed with proper fairness intervention will happily increase accuracy but will not consider providing a fair output. After all we train models to remove the human biasedness from making a decision in many situations. So, it is imporrtant to address this issue and we do that here. 
 

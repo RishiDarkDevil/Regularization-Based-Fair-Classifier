@@ -16,3 +16,8 @@ The file descriptions:
 - `Regularisation.R`: It contains the R-Code to perform the regularization based on minimizing FPR and FNR, it is not working yet.
 - `Fairness New Definition.pdf`: It contains a possibly new definition for fairness.
 
+I have learnt several important concepts and packages while doing this project, which includes:
+- **PyTorch, aif360**: I have learnt PyTorch to implement NNs and have exploited it's autograd feature to fit custom regularized model based on minimizing fairness imbalance of the trained model. I also learnt the aif360 package which consists of several fairness based metrics and dataset for easier computation and implementation of fairness at all levels starting from fairness pre-processing to post-processing.
+- **Practical Fairness**: I have read almost the entire book of 'Practical Fairness' while doing this project.
+- **Research Paper Implementation**: I have gone through several research papers and implemented them while doing this project which includes `Fairness Definitions Explained` from 2018 ACM/IEEE International Workshop on Software Fairness and `Learning Fair Classifiers: A Regularization-Inspired Approach` from FATML, August 2017, Halifax, Nova Scotia, Canada.
+
